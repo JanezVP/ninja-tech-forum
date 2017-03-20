@@ -1,0 +1,12 @@
+cron:
+- description: Delete topics older than 30 days
+  url: /cron/delete-topics
+  schedule: every monday 09:00
+
+- description: Delete comments older than 30 days
+  url: /cron/delete-comments
+  schedule: every monday 09:00
+
+- description: Topic subscribe
+  url: /cron/subscriber-topic
+  schedule: every day 08:00

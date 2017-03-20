@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Comment-list{% endblock title %}
+
+{% block content %}
+
+{% for title in topics_titles %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Topic-Title</strong>: <i>{{ title|upper }} </i></div>
+        <div class="panel-body">
+            {% for comment in comments %}
+                {% if comment.topic_title == title %}
+                    <li>{{ comment.created.strftime("%d.%m.%Y at %H:%M") }}</li>
+                    <p>{{ comment.content }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}
