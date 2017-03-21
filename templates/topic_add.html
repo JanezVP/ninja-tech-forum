@@ -2,14 +2,17 @@
 
 {% block title %}Add new topic{% endblock title %}
 
+
+
 {% block content %}
 <div class="row">
     <div class="col-md-6">
+        <h2 id="add-topic-heading">Add new topic</h2>
         <form method="post">
             <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
             <div class="form-group">
                 <label>Title</label>
-                <input type="text" class="form-control" name="title" required>
+                <input type="text" class="form-control" name="title" id="addTitle" required>
             </div>
 
             <div class="form-group">
@@ -17,8 +20,35 @@
                 <textarea name="text" class="form-control" rows="6" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-success">Submit</button>
+            <div class="form-group">
+                <label id="add-topic-sum-label">What is the sum of 2 and 8?</label>
+                <input type="text" class="form-control" id="add-topic-sum" required>
+            </div>
+
+            <button type="submit" class="btn btn-success" id="add-topic-button">Submit</button>
         </form>
     </div>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        var numberOne = 1 + Math.floor(Math.random() * 9);
+        var numberTwo = 1 + Math.floor(Math.random() * 9);
+        var numSum = numberOne + numberTwo;
+        $("#add-topic-sum-label").text("Vnesite sestevek " + numberOne + " and " + numberTwo + "?");
+        var addTopicButton = $("#add-topic-button");
+        var addTopicSum = $("#add-topic-sum");
+        addTopicButton.click(function(e) {
+            if (addTopicSum.val() === numSum.toString()){
+                addTopicButton.hide();
+                console.log("yaaay");
+            } else {
+                alert("Sestevek ni pravi. Poskusite ponovno!");
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+{% endblock scripts %}
