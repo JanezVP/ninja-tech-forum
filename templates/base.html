@@ -14,6 +14,9 @@
     <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <!-- custom -->
     <link rel="stylesheet" href="assets/custom/css/style.css">
+    <!-- Lightbox -->
+    <link href="/assets/lightbox/css/lightbox.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -36,6 +39,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/about">O forumu</a></li>
             <li><a href="/subscribe">Prijavi se na topice</a></li>
+            <li><a href="/gallery">Gallery</a></li>
 
             {% if logout_url %}
                 <li><a href="/comments/list">{{ user.email() }}</a> </li>
@@ -66,6 +70,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/assets/bootstrap/js/bootstrap.js"></script>
+    <!-- Lightbox JS -->
+    <script src="/assets/lightbox/js/lightbox.js"></script>
     {% block scripts %}
     {% endblock scripts %}
 </body>
